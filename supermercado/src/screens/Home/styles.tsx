@@ -86,7 +86,10 @@ export const styles = StyleSheet.create({
         marginTop: 32,
         alignItems: "center",
         justifyContent: "space-between",
-        flexDirection: "row"
+        flexDirection: "row",
+        paddingBottom: 20,
+        borderBottomWidth: 1,
+        borderBottomColor: "#D9D9D9",
     },
     infoContainerItem: {
         gap: 8,  
@@ -115,10 +118,10 @@ export const styles = StyleSheet.create({
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        marginTop: 20,
-        borderTopWidth: 1,
-        borderTopColor: "#D9D9D9",
-        paddingVertical: 48,
+        marginTop: 0,
+        // borderTopWidth: 1,
+        // borderTopColor: "#D9D9D9",
+        paddingVertical: 28,
         paddingHorizontal: 20,
         flexDirection: "column",
         gap: 16

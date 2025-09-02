@@ -27,7 +27,7 @@ export default function Home() {
     }
 
     function handleOnToggle(name: string) {
-        setProducts(products.map((item => item.name === name ? {...item, finalized: !item.finalized} : item)))
+        setProducts(products.map(item => item.name === name ? {...item, finalized: !item.finalized} : item))
     }
 
     return (
@@ -50,9 +50,8 @@ export default function Home() {
                     <View style={styles.infoContainerItem}>
                         <Text style={styles.finalizedLabel}>Finalizados</Text>
                         <Text style={styles.counterCard}>{productFinalizedCount}</Text>
-                    </View>
+                    </View>  
                 </View>
-
                 <FlatList
                     data={products}
                     keyExtractor={(item) => item.name}
