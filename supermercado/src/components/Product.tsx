@@ -1,4 +1,5 @@
 import { StyleSheet, View, Text, TouchableOpacity, Image } from "react-native"
+
 interface Props {
     name: string;
     finalized: boolean,
@@ -8,12 +9,12 @@ interface Props {
 
 export function Product({name, finalized = false, onRemove, onToggle} : Props) {
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, finalized && styles.containerChecked]}>
             <TouchableOpacity onPress={onToggle} style={styles.checkButton}>
                 {finalized ? (
                     <Image
                         source={require('../../assets/check.png')}
-                        style={styles.checkButton}
+                        style={styles.checkButtonPurple}
                     />
                 ) : (
                     
@@ -60,10 +61,36 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.06,
         shadowRadius: 8,
     },
+    containerChecked: {
+        flex: 1,
+        width: "100%",
+        height: 56,
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "space-between",
+        backgroundColor: "#F2F2F2",
+        borderRadius: 8,
+        paddingTop: 12,
+        paddingBottom: 12,
+        paddingLeft: 12,
+        paddingRight: 8,
+        borderWidth: 1,
+        borderColor: "#D9D9D9",
+        alignSelf: "stretch",
+        gap: 8,
+    },
     checkButton: {
         display: "flex",
         width: 24,
         height: 24,
+        padding: 3.273,
+        justifyContent: "center",
+        alignItems: "center"
+    },
+    checkButtonPurple: {
+        display: "flex",
+        width: 34,
+        height: 34,
         padding: 3.273,
         justifyContent: "center",
         alignItems: "center"

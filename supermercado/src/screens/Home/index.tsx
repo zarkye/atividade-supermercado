@@ -3,18 +3,31 @@ import { Alert, FlatList, NativeEventEmitter, ScrollView, StyleSheet, Text, Text
 import { Product } from "../../components/Product";
 import { styles } from "./styles"
 
-export default function Home() {
-
-    const [products, setProducts] = useState<string[]>([
-        "a", "hj"
-    ]);
-    const productsCount = products.length;
-    function handleRemoveProduct() {
-        
+interface ProductType{
+        name: string
+        finalized: boolean
     }
 
-    function handleOnToggle() {
-        
+export default function Home() {
+    
+    const [newProduct, setNewProduct] = useState("");
+    const [products, setProducts] = useState<ProductType[]>([]);
+
+    const productCount = products.length
+
+    const productFinalizedCount = products.filter(p => p.finalized).length
+
+    function handleAddProduct() {
+        setProducts([...products, {name: newProduct, finalized: false}]);
+        setNewProduct("");
+    }
+
+    function handleRemoveProduct(name: string) {
+        setProducts(products.filter(p => p.name !== name))
+    }
+
+    function handleOnToggle(name: string) {
+        setProducts(products.map((item => item.name === name ? {...item, finalized: !item.finalized} : item)))
     }
 
     return (
@@ -30,20 +43,24 @@ export default function Home() {
                     {/* Produtos */}
                     <View style={styles.infoContainerItem}>
                         <Text style={styles.productLabel}>Produtos</Text>
-                        <Text style={styles.counterCard}>{productsCount}</Text>
+                        <Text style={styles.counterCard}>{productCount}</Text>
                     </View>
                 
                     {/* Finalizados */}
                     <View style={styles.infoContainerItem}>
                         <Text style={styles.finalizedLabel}>Finalizados</Text>
-                        <Text style={styles.counterCard}>{productsCount}</Text>
+                        <Text style={styles.counterCard}>{productFinalizedCount}</Text>
                     </View>
                 </View>
 
                 <FlatList
                     data={products}
-                    keyExtractor={(item) => item}
-                    renderItem={({item}) => <Product name={item} finalized={false} onRemove={handleRemoveProduct} onToggle={handleOnToggle}></Product>}
+                    keyExtractor={(item) => item.name}
+                    renderItem={({ item }) =>
+                        <Product
+                            name={item.name} finalized={item.finalized}
+                            onRemove={() => handleRemoveProduct(item.name)} onToggle={() => handleOnToggle(item.name)}
+                        />}
                     showsVerticalScrollIndicator={false}
                     contentContainerStyle={styles.listView}
                     ListEmptyComponent={() => (
@@ -65,10 +82,13 @@ export default function Home() {
             </View>
             <View style={styles.inputwrapper}>
                 <TextInput
-                placeholder="Adicione um novo produto"
-                style={styles.input}
+                    style={styles.input}
+                    placeholder="Adicione um novo produto"
+                    placeholderTextColor={"#808080"}
+                    value={newProduct}
+                    onChangeText={setNewProduct}
                 />
-                <TouchableOpacity onPress={() => {}} activeOpacity={0.8}>
+                <TouchableOpacity onPress={() => handleAddProduct()} activeOpacity={0.8}>
                     <Image
                         source={require('../../../assets/plus.png')}
                         style={styles.button}

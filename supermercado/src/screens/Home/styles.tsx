@@ -38,7 +38,7 @@ export const styles = StyleSheet.create({
         flexShrink: 0,
         flexBasis: 0,
         marginRight: 4,
-        fontSize: 18,
+        fontSize: 16,
         backgroundColor: "#ffffff",
         borderRadius: 6,
         padding: 16,
