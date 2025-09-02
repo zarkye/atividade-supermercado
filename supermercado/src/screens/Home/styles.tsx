@@ -8,13 +8,14 @@ export const styles = StyleSheet.create({
     top: {
         flex: 1,
         //flexShrink: 0,
+        padding: 24,
         backgroundColor: '#7A4A9E',
         alignItems: 'center',
         justifyContent: 'center',
         
     },
     bottom: {
-        
+        padding: 24,
         height: 679,
         backgroundColor: '#F2F2F2',
         
@@ -26,15 +27,19 @@ export const styles = StyleSheet.create({
         fontSize: 18,
         fontStyle: "normal",
         fontWeight: 700,
-        lineHeight: 140
+        lineHeight: 140,
+        width: 345
+        
 
     },
     input: {
-        flex: 1,
+        display: "flex",
+        flexGrow: 1,
+        flexShrink: 0,
+        flexBasis: 0,
         marginRight: 4,
-        fontSize: 16,
+        fontSize: 18,
         backgroundColor: "#ffffff",
-        gap: 8,
         borderRadius: 6,
         padding: 16,
         height: 54,
@@ -63,5 +68,81 @@ export const styles = StyleSheet.create({
         alignItems: "center",
         borderRadius: 6,
         backgroundColor: "#31C667"
+    },
+    productLabel: {
+        fontSize: 14,
+        fontWeight: 700,
+        fontStyle: "normal",
+        color: "#31C667"
+    },
+    finalizedLabel: {
+        fontSize: 14,
+        fontWeight: 700,
+        fontStyle: "normal",
+        color: "#7A4A9E"
+    },
+    infoContainer: {
+        display: "flex",
+        marginTop: 32,
+        alignItems: "center",
+        justifyContent: "space-between",
+        flexDirection: "row"
+    },
+    infoContainerItem: {
+        gap: 8,  
+        flexDirection: "row",
+        
+        alignItems: "center"
+    },
+    counterCard: {
+        display: "flex",
+        paddingVertical: 2,
+        paddingHorizontal: 8,
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        gap: 10,
+        borderRadius: 999,
+        backgroundColor: "#D9D9D9"
+    },
+    listView: {
+        paddingVertical: 20,
+        
+        flexDirection: "column",
+        gap: 8
+    },
+    emptyListView: {
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: 20,
+        borderTopWidth: 1,
+        borderTopColor: "#D9D9D9",
+        paddingVertical: 48,
+        paddingHorizontal: 20,
+        flexDirection: "column",
+        gap: 16
+    },
+    shoppingListImage: {
+        width: 56,
+        height: 56
+    },
+    emptyListText: {
+        width: 345
+    },
+    emptyListTextUp: {
+        textAlign: "center",
+        fontSize: 14,
+        fontWeight: 700,
+        lineHeight: 19.6,
+        color: "#808080"
+    },
+    emptyListTextDown: {
+        textAlign: "center",
+        fontSize: 14,
+        fontWeight: 400,
+        lineHeight: 19.6,
+        color: "#808080"
     }
+
 })
