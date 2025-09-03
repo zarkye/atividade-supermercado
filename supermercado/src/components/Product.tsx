@@ -10,7 +10,7 @@ interface Props {
 export function Product({name, finalized = false, onRemove, onToggle} : Props) {
     return (
         <View style={[styles.container, finalized && styles.containerChecked]}>
-            <TouchableOpacity onPress={onToggle} style={styles.checkButton}>
+            <TouchableOpacity onPress={onToggle} style={styles.checkButton} activeOpacity={0.1}>
                 {finalized ? (
                     <Image
                         source={require('../../assets/check.png')}
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
         gap: 8,
         shadowColor: "#000",
         shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.06,
+        shadowOpacity: 0.1,
         shadowRadius: 8,
     },
     containerChecked: {

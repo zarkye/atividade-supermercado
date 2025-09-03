@@ -46,7 +46,7 @@ export const styles = StyleSheet.create({
         width: 289,
         borderWidth: 0.5,
         borderColor: "#7A4A9E",
-
+        
 
     },
     inputwrapper: {
@@ -57,17 +57,21 @@ export const styles = StyleSheet.create({
         top: "21%", 
         width: "100%",
         flexDirection: "row",
+        shadowColor: "#000",
+        shadowOpacity: 0.3,
+        shadowOffset: {width: 0, height: 0}
     
     },
     button: {
-        height: 52,
-        width: 52,
+        height: 54,
+        width: 54,
         display: "flex",
         padding: 18,
         justifyContent: "center",
         alignItems: "center",
         borderRadius: 6,
-        backgroundColor: "#31C667"
+        backgroundColor: "#31C667",
+
     },
     productLabel: {
         fontSize: 14,
@@ -124,7 +128,10 @@ export const styles = StyleSheet.create({
         paddingVertical: 28,
         paddingHorizontal: 20,
         flexDirection: "column",
-        gap: 16
+        gap: 16,
+        shadowColor: "#000",
+        shadowOpacity: 0.05,
+        shadowOffset: {width: 0, height: 0}
     },
     shoppingListImage: {
         width: 56,
