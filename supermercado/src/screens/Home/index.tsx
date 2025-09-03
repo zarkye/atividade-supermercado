@@ -4,9 +4,9 @@ import { Product } from "../../components/Product";
 import { styles } from "./styles"
 
 interface ProductType{
-        name: string
-        finalized: boolean
-    }
+    name: string
+    finalized: boolean
+}
 
 export default function Home() {
     
@@ -31,14 +31,13 @@ export default function Home() {
     }
 
     function handleRemoveProduct(name: string) {
-        Alert.alert("Remover", `Deseja remover o produto ${name}`, [
+        return Alert.alert("Remover", `Deseja remover o produto ${name}`, [
             {                                                                                                                   
                 text: "Sim",
                 style: "destructive",
                 onPress: () => 
                 {
                     setProducts(products.filter(p => p.name !== name))
-                    )
                 }
             },
             {
@@ -46,6 +45,7 @@ export default function Home() {
             }
         ]);
         setProducts(products.filter(p => p.name !== name))
+        
     }
 
     function handleOnToggle(name: string) {
