@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Alert, FlatList, NativeEventEmitter, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View, Image } from "react-native";
+import { Alert, FlatList, Text, TextInput, TouchableOpacity, View, Image } from "react-native";
 import { Product } from "../../components/Product";
 import { styles } from "./styles"
 
@@ -44,8 +44,6 @@ export default function Home() {
                 text: "Não",
             }
         ]);
-        setProducts(products.filter(p => p.name !== name))
-        
     }
 
     function handleOnToggle(name: string) {
