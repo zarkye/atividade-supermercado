@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Alert, FlatList, NativeEventEmitter, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View, Image } from "react-native";
 import { Product } from "../../components/Product";
 import { styles } from "./styles"
+import Toast from 'react-native-toast-message';
+import { showErrorToast, showSuccessToast } from "../../ui/toastConfig";
 
 interface ProductType{
         name: string
@@ -9,7 +11,6 @@ interface ProductType{
     }
 
 export default function Home() {
-    
     const [newProduct, setNewProduct] = useState("");
     const [products, setProducts] = useState<ProductType[]>([]);
 
@@ -18,12 +19,22 @@ export default function Home() {
     const productFinalizedCount = products.filter(p => p.finalized).length
 
     function handleAddProduct() {
-        setProducts([...products, {name: newProduct, finalized: false}]);
+        if (newProduct.trim() === "") {
+            setNewProduct("");
+            return showErrorToast('Produto Inválido', `"${newProduct}" não é um caracter válido`);
+        } 
+        else if (products.some(item => item.name === newProduct)) {
+            setNewProduct("");
+            return showErrorToast('Produto já cadastrado', `"${newProduct}" já existe`);
+        }
+        setProducts([...products, { name: newProduct, finalized: false }]);
+        showSuccessToast('Produto Adicionado', `"${newProduct}" foi adicionado à lista`);
         setNewProduct("");
     }
 
     function handleRemoveProduct(name: string) {
         setProducts(products.filter(p => p.name !== name))
+        showSuccessToast('Produto Removido', `"${name}" foi removido da lista`)
     }
 
     function handleOnToggle(name: string) {
