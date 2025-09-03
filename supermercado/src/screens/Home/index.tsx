@@ -18,11 +18,33 @@ export default function Home() {
     const productFinalizedCount = products.filter(p => p.finalized).length
 
     function handleAddProduct() {
+        if(newProduct.trim() === ""){
+            setNewProduct("")
+            return Alert.alert("Nome do produto Inválido");
+        }
+        else if(products.some(item => item.name === newProduct)){
+            setNewProduct("");
+            return Alert.alert("Produto já cadastrado");
+        }
         setProducts([...products, {name: newProduct, finalized: false}]);
         setNewProduct("");
     }
 
     function handleRemoveProduct(name: string) {
+        Alert.alert("Remover", `Deseja remover o produto ${name}`, [
+            {                                                                                                                   
+                text: "Sim",
+                style: "destructive",
+                onPress: () => 
+                {
+                    setProducts(products.filter(p => p.name !== name))
+                    )
+                }
+            },
+            {
+                text: "Não",
+            }
+        ]);
         setProducts(products.filter(p => p.name !== name))
     }
 
